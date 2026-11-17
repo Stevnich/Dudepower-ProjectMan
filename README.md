@@ -21,7 +21,7 @@ Dudepower Project Manager supports **cross-platform** operation on both **Window
 | **Home** | Main dashboard with multi-view support — toggle between list and card views, fully responsive to any window size |
 | **Recent Projects** | Quick access to your most recent animation projects |
 | **Work Statistics** | Analytics and performance insights across projects |
-| **YouTube Studio** | Native embedded web browser for YouTube Studio (testing) |
+| **YouTube Studio** | Opens YouTube Studio in the system browser (testing) |
 | **Notifications** | Stay up to date with project activity |
 | **Settings** | Configure the application to your needs |
 | **User Profile** | Manage your personal profile and preferences |
@@ -71,7 +71,7 @@ The codebase is organized around a clean separation of UI, UI logic, and busines
 
 ## 🚧 Status
 
-> This project is under active development. Some features (such as the embedded YouTube Studio browser) are currently included for testing purposes.
+> This project is under active development. The YouTube Studio shortcut currently opens in the system browser for testing.
 
 ## 📄 License
 

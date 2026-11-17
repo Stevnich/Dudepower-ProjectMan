@@ -1,0 +1,125 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:el="using:dpProject.Element"
+        xmlns:svg="using:Avalonia.Svg.Skia"
+        x:Class="dpProject.MainWindow"
+        Title="ProjectMan"
+        Width="1280" Height="820" MinWidth="760" MinHeight="520"
+        WindowStartupLocation="CenterScreen"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="NoChrome"
+        ExtendClientAreaTitleBarHeightHint="0"
+        Background="{DynamicResource BackgroundBrush}"
+        Foreground="{DynamicResource ForegroundBrush}">
+  <Window.Styles>
+    <Style Selector="Button.chrome">
+      <Setter Property="Background" Value="Transparent" />
+      <Setter Property="Foreground" Value="{DynamicResource MutedForegroundBrush}" />
+      <Setter Property="BorderThickness" Value="0" />
+      <Setter Property="CornerRadius" Value="{DynamicResource RadiusMd}" />
+      <Setter Property="Padding" Value="8" />
+    </Style>
+    <Style Selector="Button.chrome:pointerover">
+      <Setter Property="Background" Value="{DynamicResource SidebarAccentBrush}" />
+      <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+    </Style>
+    <Style Selector="Button.window-control">
+      <Setter Property="CornerRadius" Value="0" />
+      <Setter Property="Padding" Value="0" />
+      <Setter Property="Width" Value="46" />
+      <Setter Property="Height" Value="37" />
+      <Setter Property="HorizontalContentAlignment" Value="Center" />
+    </Style>
+    <Style Selector="Button.window-control.close:pointerover">
+      <Setter Property="Background" Value="{DynamicResource StatusDelayedBrush}" />
+      <Setter Property="Foreground" Value="White" />
+    </Style>
+  </Window.Styles>
+<NativeMenu.Menu>
+    <NativeMenu>
+        <NativeMenuItem Header="Production House" IsVisible="true">
+            <NativeMenu>                    
+                <NativeMenuItem Header="Configure" Gesture="Meta+O" />
+                <NativeMenuItem Header="List Studios" Gesture="Meta+Shift+S" />
+                <NativeMenuItem Header="Contact Production House Owner" Gesture="Meta+A" />
+                <NativeMenuItem Header="System Information (Owner Only)" Gesture="Meta+Shift+C" />
+            </NativeMenu>
+        </NativeMenuItem>
+        <NativeMenuItem Header="Studio" IsEnabled="true">
+            <NativeMenu>
+                <NativeMenuItem Header="Contact Owner" Command="{Binding CutCommand}" Gesture="Meta+X" />
+                <NativeMenuItem Header="New Project" Command="{Binding CopyCommand}" Gesture="Meta+C" />
+                <NativeMenuItem Header="Configure" Command="{Binding PasteCommand}" Gesture="Meta+V" />
+                <NativeMenuItem Header="Studio Critics" Command="{Binding PasteCommand}" Gesture="Meta+V" />
+                <NativeMenuItemSeparator />
+            
+                <NativeMenuItem Header="Gears">
+                    <NativeMenu>
+                        <NativeMenuItem Header="Shot Listing" Command="{Binding SubTool1Command}" />
+                        <NativeMenuItem Header="Storyboarding" Command="{Binding SubTool2Command}" />
+                        <NativeMenuItem Header="Screenplay Writer" Command="{Binding SubTool3Command}" />
+                    </NativeMenu>
+                </NativeMenuItem>
+            </NativeMenu>
+        </NativeMenuItem>
+        <NativeMenuItem Header="Account" IsEnabled="true">
+            <NativeMenu>
+                <NativeMenuItem Header="Sign In" Command="{Binding CutCommand}" Gesture="Meta+X" />
+                <NativeMenuItem Header="New Project" Command="{Binding CopyCommand}" Gesture="Meta+C" />
+                <NativeMenuItem Header="Configure" Command="{Binding PasteCommand}" Gesture="Meta+V" />
+                <NativeMenuItem Header="Studio Critics" Command="{Binding PasteCommand}" Gesture="Meta+V" />
+            </NativeMenu>
+        </NativeMenuItem>
+    </NativeMenu>
+</NativeMenu.Menu>
+  <Grid x:Name="RootGrid" RowDefinitions="Auto,*">
+    <Border x:Name="TopBar" Grid.Row="0" Height="40"
+            Background="{DynamicResource SidebarBrush}"
+            BorderBrush="{DynamicResource SidebarBorderBrush}"
+            BorderThickness="0,0,0,1"
+            PointerPressed="TopBar_PointerPressed">
+      <Grid ColumnDefinitions="Auto,Auto,*,Auto">
+        <Border x:Name="MacInset" Grid.Column="0" Width="78"
+                IsVisible="False" IsHitTestVisible="False" />
+        <Button Grid.Column="1" Classes="chrome" Margin="8,0,0,0"
+                VerticalAlignment="Center" ToolTip.Tip="Toggle navigation"
+                Click="TogglePanel_Click">
+          <svg:Svg x:Name="PanelIcon" Path="/asset/ico/sidePanL.svg"
+                   Css="{DynamicResource IconCss}" Width="16" Height="16" />
+        </Button>
+        <TextBlock Grid.Column="2" Text="ProjectMan"
+                   FontSize="13" FontWeight="SemiBold"
+                   VerticalAlignment="Center" Margin="14,0"
+                   Foreground="{DynamicResource MutedForegroundBrush}" />
+        <StackPanel x:Name="WinControls" Grid.Column="3" Orientation="Horizontal"
+                    IsVisible="False">
+          <Button Classes="chrome window-control" Click="Minimize_Click"
+                  ToolTip.Tip="Minimize">
+            <svg:Svg Path="/asset/ico/minimize.svg" Css="{DynamicResource IconCss}"
+                     Width="12" Height="12" />
+          </Button>
+          <Button Classes="chrome window-control" Click="Maximize_Click"
+                  ToolTip.Tip="Maximize">
+            <svg:Svg x:Name="MaxIcon" Path="/asset/ico/maximize.svg"
+                     Css="{DynamicResource IconCss}" Width="12" Height="12" />
+          </Button>
+          <Button Classes="chrome window-control close" Click="Close_Click"
+                  ToolTip.Tip="Close">
+            <svg:Svg Path="/asset/ico/close.svg" Css="{DynamicResource IconCss}"
+                     Width="12" Height="12" />
+          </Button>
+        </StackPanel>
+      </Grid>
+    </Border>
+    <!--SideBar Config-->
+    <Grid Grid.Row="1" ColumnDefinitions="Auto,*">
+      <el:SidebarView x:Name="SidebarPanel" Grid.Column="0"
+                      TabSelected="Sidebar_TabSelected" />
+      <TransitioningContentControl x:Name="PageHost" Grid.Column="1" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+        <TransitioningContentControl.PageTransition>
+          <PageSlide Duration="0:0:0.22" Orientation="Horizontal" />
+        </TransitioningContentControl.PageTransition>
+      </TransitioningContentControl>
+    </Grid>
+  </Grid>
+</Window>

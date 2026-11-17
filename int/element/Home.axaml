@@ -1,0 +1,151 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:dpProject"
+             xmlns:el="using:dpProject.Element"
+             xmlns:svg="using:Avalonia.Svg.Skia"
+             x:Class="dpProject.Element.HomeView">
+  <UserControl.Styles>
+    <Style Selector="TextBlock.eyebrow">
+      <Setter Property="FontSize" Value="11" />
+      <Setter Property="FontWeight" Value="SemiBold" />
+      <Setter Property="LetterSpacing" Value="0.8" />
+      <Setter Property="Foreground" Value="{DynamicResource MutedForegroundBrush}" />
+    </Style>
+    <Style Selector="ToggleButton.filter">
+      <Setter Property="Background" Value="Transparent" />
+      <Setter Property="Foreground" Value="{DynamicResource MutedForegroundBrush}" />
+      <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
+      <Setter Property="BorderThickness" Value="1" />
+      <Setter Property="CornerRadius" Value="999" />
+      <Setter Property="Padding" Value="13,6" />
+      <Setter Property="FontSize" Value="12" />
+    </Style>
+    <Style Selector="ToggleButton.filter:checked">
+      <Setter Property="Background" Value="{DynamicResource BrandBrush}" />
+      <Setter Property="BorderBrush" Value="{DynamicResource BrandBrush}" />
+      <Setter Property="Foreground" Value="{DynamicResource BrandForegroundBrush}" />
+    </Style>
+    <Style Selector="ToggleButton.view">
+      <Setter Property="Background" Value="Transparent" />
+      <Setter Property="Foreground" Value="{DynamicResource MutedForegroundBrush}" />
+      <Setter Property="BorderThickness" Value="0" />
+      <Setter Property="CornerRadius" Value="{DynamicResource RadiusSm}" />
+      <Setter Property="Padding" Value="8" />
+    </Style>
+    <Style Selector="ToggleButton.view:checked">
+      <Setter Property="Background" Value="{DynamicResource CardBrush}" />
+      <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+    </Style>
+  </UserControl.Styles>
+
+  <Grid RowDefinitions="Auto,Auto,*">
+    <Grid Grid.Row="0" ColumnDefinitions="*,Auto" Margin="28,26,28,22">
+      <StackPanel Spacing="5">
+        <TextBlock Classes="eyebrow" Text="MONDAY, JULY 15" />
+        <TextBlock Text="Good morning, Stevnich" FontSize="26" FontWeight="Bold"
+                   TextWrapping="Wrap" />
+        <TextBlock Text="A quick look at everything you're creating."
+                   FontSize="13" Foreground="{DynamicResource MutedForegroundBrush}" />
+      </StackPanel>
+      <Button Grid.Column="1" VerticalAlignment="Center"
+              Background="{DynamicResource BrandBrush}"
+              Foreground="{DynamicResource BrandForegroundBrush}"
+              BorderThickness="0" CornerRadius="{DynamicResource RadiusMd}"
+              Padding="14,10">
+        <StackPanel Orientation="Horizontal" Spacing="8">
+          <svg:Svg Path="/asset/ico/add.svg" Css="{DynamicResource BrandIconCss}"
+                   Width="14" Height="14" VerticalAlignment="Center" />
+          <TextBlock Text="New project" FontSize="13" FontWeight="SemiBold" />
+        </StackPanel>
+      </Button>
+    </Grid>
+
+    <Grid Grid.Row="1" ColumnDefinitions="*,Auto" Margin="28,0,28,14">
+      <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                    VerticalScrollBarVisibility="Disabled">
+        <StackPanel x:Name="FilterBar" Orientation="Horizontal" Spacing="7">
+          <ToggleButton Classes="filter" Content="All projects" Tag="All"
+                        IsChecked="True" Click="Filter_Click" />
+          <ToggleButton Classes="filter" Content="In progress" Tag="InProgress"
+                        Click="Filter_Click" />
+          <ToggleButton Classes="filter" Content="At risk" Tag="AtRisk"
+                        Click="Filter_Click" />
+          <ToggleButton Classes="filter" Content="Delayed" Tag="Delayed"
+                        Click="Filter_Click" />
+          <ToggleButton Classes="filter" Content="Ready to upload" Tag="ReadyToUpload"
+                        Click="Filter_Click" />
+        </StackPanel>
+      </ScrollViewer>
+      <Border Grid.Column="1" Background="{DynamicResource MutedBrush}"
+              CornerRadius="{DynamicResource RadiusMd}" Padding="3" Margin="12,0,0,0">
+        <StackPanel Orientation="Horizontal" Spacing="2">
+          <ToggleButton x:Name="CardViewButton" Classes="view" Tag="Cards"
+                        IsChecked="True" Click="ViewType_Click" ToolTip.Tip="Card view">
+            <svg:Svg Path="/asset/ico/grid.svg" Css="{DynamicResource IconCss}"
+                     Width="15" Height="15" />
+          </ToggleButton>
+          <ToggleButton x:Name="ListViewButton" Classes="view" Tag="List"
+                        Click="ViewType_Click" ToolTip.Tip="List view">
+            <svg:Svg Path="/asset/ico/list.svg" Css="{DynamicResource IconCss}"
+                     Width="15" Height="15" />
+          </ToggleButton>
+        </StackPanel>
+      </Border>
+    </Grid>
+
+    <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Disabled">
+      <Grid Margin="20,0,20,20">
+        <ItemsControl x:Name="CardGrid">
+          <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+              <WrapPanel />
+            </ItemsPanelTemplate>
+          </ItemsControl.ItemsPanel>
+          <ItemsControl.ItemTemplate>
+            <DataTemplate x:DataType="local:ProjectItem">
+              <el:ProjectCard Margin="8" Title="{Binding Title}"
+                              Description="{Binding Description}"
+                              Status="{Binding Status}" Thumbnail="{Binding Thumbnail}"
+                              Percent="{Binding Percent}" Progress="{Binding Progress}"
+                              TasksDone="{Binding TasksDone}" TasksTotal="{Binding TasksTotal}"
+                              Comments="{Binding Comments}" DueDate="{Binding DueDate}" />
+            </DataTemplate>
+          </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <ItemsControl x:Name="ListGrid" IsVisible="False">
+          <ItemsControl.ItemTemplate>
+            <DataTemplate x:DataType="local:ProjectItem">
+              <Border Background="{DynamicResource CardBrush}"
+                      BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1"
+                      CornerRadius="{DynamicResource RadiusLg}"
+                      Padding="16,13" Margin="8,4">
+                <Grid ColumnDefinitions="*,Auto,Auto" ColumnSpacing="20">
+                  <StackPanel Spacing="3">
+                    <TextBlock Text="{Binding Title}" FontSize="14" FontWeight="SemiBold"
+                               TextTrimming="CharacterEllipsis" />
+                    <TextBlock Text="{Binding Description}" FontSize="12"
+                               Foreground="{DynamicResource MutedForegroundBrush}"
+                               TextTrimming="CharacterEllipsis" />
+                  </StackPanel>
+                  <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="8"
+                              VerticalAlignment="Center">
+                    <ProgressBar Width="86" Height="5" Minimum="0" Maximum="100"
+                                 Value="{Binding Progress}"
+                                 Background="{DynamicResource MutedBrush}"
+                                 Foreground="{DynamicResource BrandBrush}" />
+                    <TextBlock Text="{Binding Percent, StringFormat={}{0:0}%}"
+                               FontSize="12" MinWidth="34" VerticalAlignment="Center" />
+                  </StackPanel>
+                  <TextBlock Grid.Column="2" Text="{Binding Status}"
+                             FontSize="11" VerticalAlignment="Center"
+                             Foreground="{DynamicResource MutedForegroundBrush}" />
+                </Grid>
+              </Border>
+            </DataTemplate>
+          </ItemsControl.ItemTemplate>
+        </ItemsControl>
+      </Grid>
+    </ScrollViewer>
+  </Grid>
+</UserControl>

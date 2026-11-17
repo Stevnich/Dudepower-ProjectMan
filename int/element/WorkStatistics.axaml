@@ -1,0 +1,85 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:dpProject"
+             x:Class="dpProject.Element.WorkStatisticsView">
+  <ScrollViewer HorizontalScrollBarVisibility="Disabled">
+    <StackPanel Margin="30,28,30,30" Spacing="22">
+      <StackPanel Spacing="5">
+        <TextBlock Text="YOUR WORKSPACE" FontSize="11" FontWeight="SemiBold"
+                   LetterSpacing="0.8" Foreground="{DynamicResource MutedForegroundBrush}" />
+        <TextBlock Text="Work statistics" FontSize="26" FontWeight="Bold" />
+        <TextBlock Text="A snapshot of your team's momentum."
+                   FontSize="13" Foreground="{DynamicResource MutedForegroundBrush}" />
+      </StackPanel>
+
+      <Grid ColumnDefinitions="*,*,*,*" ColumnSpacing="12">
+        <Border Background="{DynamicResource CardBrush}" BorderBrush="{DynamicResource BorderBrush}"
+                BorderThickness="1" CornerRadius="{DynamicResource RadiusLg}" Padding="18">
+          <StackPanel Spacing="8">
+            <TextBlock Text="Active projects" FontSize="12"
+                       Foreground="{DynamicResource MutedForegroundBrush}" />
+            <TextBlock Text="6" FontSize="28" FontWeight="Bold" />
+            <TextBlock Text="+2 this month" FontSize="11"
+                       Foreground="{DynamicResource StatusReadyBrush}" />
+          </StackPanel>
+        </Border>
+        <Border Grid.Column="1" Background="{DynamicResource CardBrush}" BorderBrush="{DynamicResource BorderBrush}"
+                BorderThickness="1" CornerRadius="{DynamicResource RadiusLg}" Padding="18">
+          <StackPanel Spacing="8">
+            <TextBlock Text="Tasks completed" FontSize="12"
+                       Foreground="{DynamicResource MutedForegroundBrush}" />
+            <TextBlock Text="32" FontSize="28" FontWeight="Bold" />
+            <TextBlock Text="of 70 total tasks" FontSize="11"
+                       Foreground="{DynamicResource MutedForegroundBrush}" />
+          </StackPanel>
+        </Border>
+        <Border Grid.Column="2" Background="{DynamicResource CardBrush}" BorderBrush="{DynamicResource BorderBrush}"
+                BorderThickness="1" CornerRadius="{DynamicResource RadiusLg}" Padding="18">
+          <StackPanel Spacing="8">
+            <TextBlock Text="On schedule" FontSize="12"
+                       Foreground="{DynamicResource MutedForegroundBrush}" />
+            <TextBlock Text="4" FontSize="28" FontWeight="Bold" />
+            <TextBlock Text="projects on track" FontSize="11"
+                       Foreground="{DynamicResource StatusReadyBrush}" />
+          </StackPanel>
+        </Border>
+        <Border Grid.Column="3" Background="{DynamicResource CardBrush}" BorderBrush="{DynamicResource BorderBrush}"
+                BorderThickness="1" CornerRadius="{DynamicResource RadiusLg}" Padding="18">
+          <StackPanel Spacing="8">
+            <TextBlock Text="Team members" FontSize="12"
+                       Foreground="{DynamicResource MutedForegroundBrush}" />
+            <TextBlock Text="8" FontSize="28" FontWeight="Bold" />
+            <TextBlock Text="across 3 groups" FontSize="11"
+                       Foreground="{DynamicResource MutedForegroundBrush}" />
+          </StackPanel>
+        </Border>
+      </Grid>
+
+      <Border Background="{DynamicResource CardBrush}" BorderBrush="{DynamicResource BorderBrush}"
+              BorderThickness="1" CornerRadius="{DynamicResource RadiusLg}" Padding="22">
+        <StackPanel Spacing="18">
+          <StackPanel Spacing="4">
+            <TextBlock Text="Project progress" FontSize="16" FontWeight="SemiBold" />
+            <TextBlock Text="Completion across your current projects"
+                       FontSize="12" Foreground="{DynamicResource MutedForegroundBrush}" />
+          </StackPanel>
+          <ItemsControl x:Name="ProgressList">
+            <ItemsControl.ItemTemplate>
+              <DataTemplate x:DataType="local:ProjectItem">
+                <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto" Margin="0,6">
+                  <TextBlock Text="{Binding Title}" FontSize="12" TextTrimming="CharacterEllipsis" />
+                  <TextBlock Grid.Column="1" Text="{Binding Progress, StringFormat={}{0:0}%}"
+                             FontSize="12" Foreground="{DynamicResource MutedForegroundBrush}" />
+                  <ProgressBar Grid.Row="1" Grid.ColumnSpan="2" Height="6" Margin="0,7,0,0"
+                               Minimum="0" Maximum="100" Value="{Binding Progress}"
+                               Background="{DynamicResource MutedBrush}"
+                               Foreground="{DynamicResource BrandBrush}" />
+                </Grid>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </StackPanel>
+      </Border>
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

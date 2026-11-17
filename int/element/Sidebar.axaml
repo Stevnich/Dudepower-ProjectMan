@@ -1,0 +1,144 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:svg="using:Avalonia.Svg.Skia"
+             x:Class="dpProject.Element.SidebarView">
+  <UserControl.Styles>
+    <Style Selector="RadioButton.nav">
+      <Setter Property="HorizontalAlignment" Value="Stretch" />
+      <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+      <Setter Property="Foreground" Value="{DynamicResource MutedForegroundBrush}" />
+      <Setter Property="FontSize" Value="13" />
+      <Setter Property="Padding" Value="12,10" />
+      <Setter Property="Template">
+        <ControlTemplate>
+          <Border Background="{TemplateBinding Background}"
+                  CornerRadius="{DynamicResource RadiusMd}"
+                  Padding="{TemplateBinding Padding}">
+            <ContentPresenter Content="{TemplateBinding Content}"
+                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                              VerticalAlignment="Center" />
+          </Border>
+        </ControlTemplate>
+      </Setter>
+    </Style>
+    <Style Selector="RadioButton.nav:pointerover">
+      <Setter Property="Background" Value="{DynamicResource SidebarAccentBrush}" />
+      <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+    </Style>
+    <Style Selector="RadioButton.nav:checked">
+      <Setter Property="Background" Value="{DynamicResource BrandSoftBrush}" />
+      <Setter Property="Foreground" Value="{DynamicResource BrandBrush}" />
+    </Style>
+  </UserControl.Styles>
+
+  <Border x:Name="SidebarRoot" Width="238" ClipToBounds="True"
+          Background="{DynamicResource SidebarBrush}"
+          BorderBrush="{DynamicResource SidebarBorderBrush}"
+          BorderThickness="0,0,1,0">
+    <Border.Transitions>
+      <Transitions>
+        <DoubleTransition Property="Width" Duration="0:0:0.22" />
+      </Transitions>
+    </Border.Transitions>
+    <Grid RowDefinitions="Auto,*,Auto" Margin="12,18,12,12">
+      <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="11"
+                  Margin="8,4,8,24">
+        <Border Width="34" Height="34" CornerRadius="11"
+                Background="{DynamicResource BrandBrush}">
+          <svg:Svg Path="/asset/ico/projectman.svg" Css="{DynamicResource BrandIconCss}"
+                   Width="21" Height="21" HorizontalAlignment="Center"
+                   VerticalAlignment="Center" />
+        </Border>
+        <StackPanel VerticalAlignment="Center" Spacing="1">
+          <TextBlock Text="ProjectMan" FontSize="14" FontWeight="SemiBold" />
+          <TextBlock Text="Creative workspace" FontSize="11"
+                     Foreground="{DynamicResource MutedForegroundBrush}" />
+        </StackPanel>
+      </StackPanel>
+
+      <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+        <StackPanel Spacing="3">
+          <TextBlock Text="WORKSPACE" FontSize="10" FontWeight="SemiBold"
+                     LetterSpacing="0.8" Margin="10,0,0,7"
+                     Foreground="{DynamicResource MutedForegroundBrush}" />
+          <RadioButton Classes="nav" GroupName="AppNavigation" Tag="Home"
+                       IsChecked="True" Checked="Navigation_Checked">
+            <StackPanel Orientation="Horizontal" Spacing="12">
+              <svg:Svg Path="/asset/ico/home.svg" Css="{DynamicResource IconCss}"
+                       Width="17" Height="17" />
+              <TextBlock Text="Home" VerticalAlignment="Center" />
+            </StackPanel>
+          </RadioButton>
+          <RadioButton Classes="nav" GroupName="AppNavigation" Tag="RecentProjects"
+                       Checked="Navigation_Checked">
+            <StackPanel Orientation="Horizontal" Spacing="12">
+              <svg:Svg Path="/asset/ico/time.svg" Css="{DynamicResource IconCss}"
+                       Width="17" Height="17" />
+              <TextBlock Text="Recent Projects" VerticalAlignment="Center" />
+            </StackPanel>
+          </RadioButton>
+          <RadioButton Classes="nav" GroupName="AppNavigation" Tag="WorkStatistics"
+                       Checked="Navigation_Checked">
+            <StackPanel Orientation="Horizontal" Spacing="12">
+              <svg:Svg Path="/asset/ico/stats.svg" Css="{DynamicResource IconCss}"
+                       Width="17" Height="17" />
+              <TextBlock Text="Work Statistics" VerticalAlignment="Center" />
+            </StackPanel>
+          </RadioButton>
+          <RadioButton Classes="nav" GroupName="AppNavigation" Tag="YoutubeStudio"
+                       Checked="Navigation_Checked">
+            <StackPanel Orientation="Horizontal" Spacing="12">
+              <svg:Svg Path="/asset/ico/youtube.svg" Css="{DynamicResource IconCss}"
+                       Width="17" Height="17" />
+              <TextBlock Text="YouTube Studio" VerticalAlignment="Center" />
+            </StackPanel>
+          </RadioButton>
+
+          <TextBlock Text="PERSONAL" FontSize="10" FontWeight="SemiBold"
+                     LetterSpacing="0.8" Margin="10,24,0,7"
+                     Foreground="{DynamicResource MutedForegroundBrush}" />
+          <RadioButton Classes="nav" GroupName="AppNavigation" Tag="Notifications"
+                       Checked="Navigation_Checked">
+            <Grid ColumnDefinitions="Auto,*,Auto">
+              <svg:Svg Path="/asset/ico/BellOn.svg" Css="{DynamicResource IconCss}"
+                       Width="17" Height="17" />
+              <TextBlock Grid.Column="1" Text="Notifications" Margin="12,0,0,0"
+                         VerticalAlignment="Center" />
+              <Border Grid.Column="2" Background="{DynamicResource BrandBrush}"
+                      CornerRadius="9" MinWidth="20" Height="19" Padding="5,0">
+                <TextBlock Text="5" FontSize="10" FontWeight="SemiBold"
+                           Foreground="{DynamicResource BrandForegroundBrush}"
+                           HorizontalAlignment="Center" VerticalAlignment="Center" />
+              </Border>
+            </Grid>
+          </RadioButton>
+          <RadioButton Classes="nav" GroupName="AppNavigation" Tag="Settings"
+                       Checked="Navigation_Checked">
+            <StackPanel Orientation="Horizontal" Spacing="12">
+              <svg:Svg Path="/asset/ico/gear.svg" Css="{DynamicResource IconCss}"
+                       Width="17" Height="17" />
+              <TextBlock Text="Settings" VerticalAlignment="Center" />
+            </StackPanel>
+          </RadioButton>
+        </StackPanel>
+      </ScrollViewer>
+
+      <RadioButton Grid.Row="2" Classes="nav" GroupName="AppNavigation"
+                   Tag="UserProfile" Checked="Navigation_Checked" Margin="0,14,0,0">
+        <StackPanel Orientation="Horizontal" Spacing="11">
+          <Border Width="34" Height="34" CornerRadius="17"
+                  Background="{DynamicResource BrandSoftBrush}">
+            <TextBlock Text="SN" FontSize="11" FontWeight="SemiBold"
+                       Foreground="{DynamicResource BrandBrush}"
+                       HorizontalAlignment="Center" VerticalAlignment="Center" />
+          </Border>
+          <StackPanel VerticalAlignment="Center" Spacing="1">
+            <TextBlock Text="Stevnich" FontSize="12" FontWeight="SemiBold" />
+            <TextBlock Text="Lead Animator" FontSize="11"
+                       Foreground="{DynamicResource MutedForegroundBrush}" />
+          </StackPanel>
+        </StackPanel>
+      </RadioButton>
+    </Grid>
+  </Border>
+</UserControl>

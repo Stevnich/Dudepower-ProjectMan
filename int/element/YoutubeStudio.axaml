@@ -1,0 +1,31 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:svg="using:Avalonia.Svg.Skia"
+             x:Class="dpProject.Element.YoutubeStudioView">
+  <Grid Background="{DynamicResource BackgroundBrush}">
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"
+                MaxWidth="440" Margin="28" Spacing="16">
+      <Border Width="64" Height="64" CornerRadius="20"
+              Background="{DynamicResource BrandSoftBrush}"
+              HorizontalAlignment="Center">
+        <svg:Svg Path="/asset/ico/youtube.svg" Css="{DynamicResource AccentIconCss}"
+                 Width="28" Height="28" HorizontalAlignment="Center"
+                 VerticalAlignment="Center" />
+      </Border>
+      <TextBlock Text="YouTube Studio" FontSize="25" FontWeight="Bold"
+                 HorizontalAlignment="Center" />
+      <TextBlock Text="Open your channel dashboard in your default web browser."
+                 FontSize="13" TextWrapping="Wrap" TextAlignment="Center"
+                 Foreground="{DynamicResource MutedForegroundBrush}" />
+      <Button HorizontalAlignment="Center" Click="OpenStudio_Click"
+              Background="{DynamicResource BrandBrush}"
+              Foreground="{DynamicResource BrandForegroundBrush}"
+              BorderThickness="0" CornerRadius="{DynamicResource RadiusMd}"
+              Padding="18,11">
+        <TextBlock Text="Open YouTube Studio" FontSize="13" FontWeight="SemiBold" />
+      </Button>
+      <TextBlock x:Name="StatusMessage" FontSize="12" TextWrapping="Wrap"
+                 TextAlignment="Center" Foreground="{DynamicResource StatusDelayedBrush}" />
+    </StackPanel>
+  </Grid>
+</UserControl>

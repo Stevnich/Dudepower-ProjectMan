@@ -1,0 +1,140 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <!-- Non-themed tokens -->
+  <x:Double x:Key="FontSizeBase">16</x:Double>
+  <CornerRadius x:Key="RadiusSm">6</CornerRadius>
+  <CornerRadius x:Key="RadiusMd">8</CornerRadius>
+  <CornerRadius x:Key="RadiusLg">10</CornerRadius>
+  <CornerRadius x:Key="RadiusXl">14</CornerRadius>
+  <x:String x:Key="IconCss">* { fill: #717182 !important; stroke: #717182 !important; } [fill='none'] { fill: none !important; }</x:String>
+  <x:String x:Key="AccentIconCss">* { fill: #5B47E0 !important; stroke: #5B47E0 !important; } [fill='none'] { fill: none !important; }</x:String>
+  <x:String x:Key="BrandIconCss">* { fill: #FFFFFF !important; stroke: #FFFFFF !important; } [fill='none'] { fill: none !important; }</x:String>
+
+  <ResourceDictionary.ThemeDictionaries>
+    <ResourceDictionary x:Key="Light">
+      <x:String x:Key="IconCss">* { fill: #717182 !important; stroke: #717182 !important; } [fill='none'] { fill: none !important; }</x:String>
+      <x:String x:Key="AccentIconCss">* { fill: #5B47E0 !important; stroke: #5B47E0 !important; } [fill='none'] { fill: none !important; }</x:String>
+      <x:String x:Key="BrandIconCss">* { fill: #FFFFFF !important; stroke: #FFFFFF !important; } [fill='none'] { fill: none !important; }</x:String>
+      <!-- ===== shadcn tokens (light) ===== -->
+      <SolidColorBrush x:Key="BackgroundBrush" Color="#FFFFFF"/>
+      <SolidColorBrush x:Key="ForegroundBrush" Color="#0A0A0A"/>
+      <SolidColorBrush x:Key="CardBrush" Color="#FFFFFF"/>
+      <SolidColorBrush x:Key="CardForegroundBrush" Color="#0A0A0A"/>
+      <SolidColorBrush x:Key="PopoverBrush" Color="#FFFFFF"/>
+      <SolidColorBrush x:Key="PopoverForegroundBrush" Color="#0A0A0A"/>
+      <SolidColorBrush x:Key="PrimaryBrush" Color="#030213"/>
+      <SolidColorBrush x:Key="PrimaryForegroundBrush" Color="#FFFFFF"/>
+      <SolidColorBrush x:Key="SecondaryBrush" Color="#ECEEF2"/>
+      <SolidColorBrush x:Key="SecondaryForegroundBrush" Color="#030213"/>
+      <SolidColorBrush x:Key="MutedBrush" Color="#ECECF0"/>
+      <SolidColorBrush x:Key="MutedForegroundBrush" Color="#717182"/>
+      <SolidColorBrush x:Key="AccentBrush" Color="#E9EBEF"/>
+      <SolidColorBrush x:Key="AccentForegroundBrush" Color="#030213"/>
+      <SolidColorBrush x:Key="DestructiveBrush" Color="#D4183D"/>
+      <SolidColorBrush x:Key="DestructiveForegroundBrush" Color="#FFFFFF"/>
+      <SolidColorBrush x:Key="BorderBrush" Color="#1A000000"/>
+      <SolidColorBrush x:Key="InputBrush" Color="#00000000"/>
+      <SolidColorBrush x:Key="InputBackgroundBrush" Color="#F3F3F5"/>
+      <SolidColorBrush x:Key="SwitchBackgroundBrush" Color="#CBCED4"/>
+      <SolidColorBrush x:Key="RingBrush" Color="#A1A1A1"/>
+      <SolidColorBrush x:Key="Chart1Brush" Color="#F54900"/>
+      <SolidColorBrush x:Key="Chart2Brush" Color="#009689"/>
+      <SolidColorBrush x:Key="Chart3Brush" Color="#104E64"/>
+      <SolidColorBrush x:Key="Chart4Brush" Color="#FFB900"/>
+      <SolidColorBrush x:Key="Chart5Brush" Color="#FE9A00"/>
+      <SolidColorBrush x:Key="SidebarBrush" Color="#FAFAFA"/>
+      <SolidColorBrush x:Key="SidebarForegroundBrush" Color="#0A0A0A"/>
+      <SolidColorBrush x:Key="SidebarPrimaryBrush" Color="#030213"/>
+      <SolidColorBrush x:Key="SidebarPrimaryForegroundBrush" Color="#FAFAFA"/>
+      <SolidColorBrush x:Key="SidebarAccentBrush" Color="#F5F5F5"/>
+      <SolidColorBrush x:Key="SidebarAccentForegroundBrush" Color="#171717"/>
+      <SolidColorBrush x:Key="SidebarBorderBrush" Color="#E5E5E5"/>
+      <SolidColorBrush x:Key="SidebarRingBrush" Color="#A1A1A1"/>
+      <!-- ===== extra tokens (not in the CSS) ===== -->
+      <SolidColorBrush x:Key="BrandBrush" Color="#5B47E0"/>
+      <SolidColorBrush x:Key="BrandForegroundBrush" Color="#FFFFFF"/>
+      <SolidColorBrush x:Key="BrandSoftBrush" Color="#1F5B47E0"/>
+      <SolidColorBrush x:Key="StatusInProgressBrush" Color="#5B47E0"/>
+      <SolidColorBrush x:Key="StatusAtRiskBrush" Color="#C98A00"/>
+      <SolidColorBrush x:Key="StatusReadyBrush" Color="#12915F"/>
+      <SolidColorBrush x:Key="StatusDelayedBrush" Color="#D4183D"/>
+      <SolidColorBrush x:Key="BadgeBackgroundBrush" Color="#E6FFFFFF"/>
+      <!-- ===== Fluent control overrides: keep TextBox etc. flat and token-driven ===== -->
+      <SolidColorBrush x:Key="TextControlBackground" Color="Transparent"/>
+      <SolidColorBrush x:Key="TextControlBorderBrush" Color="Transparent"/>
+      <SolidColorBrush x:Key="TextControlForeground" Color="#0A0A0A"/>
+      <SolidColorBrush x:Key="TextControlPlaceholderForeground" Color="#717182"/>
+      <SolidColorBrush x:Key="TextControlBackgroundPointerOver" Color="Transparent"/>
+      <SolidColorBrush x:Key="TextControlBorderBrushPointerOver" Color="Transparent"/>
+      <SolidColorBrush x:Key="TextControlForegroundPointerOver" Color="#0A0A0A"/>
+      <SolidColorBrush x:Key="TextControlPlaceholderForegroundPointerOver" Color="#717182"/>
+      <SolidColorBrush x:Key="TextControlBackgroundFocused" Color="Transparent"/>
+      <SolidColorBrush x:Key="TextControlBorderBrushFocused" Color="Transparent"/>
+      <SolidColorBrush x:Key="TextControlForegroundFocused" Color="#0A0A0A"/>
+      <SolidColorBrush x:Key="TextControlPlaceholderForegroundFocused" Color="#717182"/>
+    </ResourceDictionary>
+
+    <ResourceDictionary x:Key="Dark">
+      <x:String x:Key="IconCss">* { fill: #A1A1A1 !important; stroke: #A1A1A1 !important; } [fill='none'] { fill: none !important; }</x:String>
+      <x:String x:Key="AccentIconCss">* { fill: #7C6AF7 !important; stroke: #7C6AF7 !important; } [fill='none'] { fill: none !important; }</x:String>
+      <x:String x:Key="BrandIconCss">* { fill: #FFFFFF !important; stroke: #FFFFFF !important; } [fill='none'] { fill: none !important; }</x:String>
+      <!-- ===== shadcn tokens (dark) ===== -->
+      <SolidColorBrush x:Key="BackgroundBrush" Color="#0A0A0A"/>
+      <SolidColorBrush x:Key="ForegroundBrush" Color="#FAFAFA"/>
+      <SolidColorBrush x:Key="CardBrush" Color="#0A0A0A"/>
+      <SolidColorBrush x:Key="CardForegroundBrush" Color="#FAFAFA"/>
+      <SolidColorBrush x:Key="PopoverBrush" Color="#0A0A0A"/>
+      <SolidColorBrush x:Key="PopoverForegroundBrush" Color="#FAFAFA"/>
+      <SolidColorBrush x:Key="PrimaryBrush" Color="#FAFAFA"/>
+      <SolidColorBrush x:Key="PrimaryForegroundBrush" Color="#171717"/>
+      <SolidColorBrush x:Key="SecondaryBrush" Color="#262626"/>
+      <SolidColorBrush x:Key="SecondaryForegroundBrush" Color="#FAFAFA"/>
+      <SolidColorBrush x:Key="MutedBrush" Color="#262626"/>
+      <SolidColorBrush x:Key="MutedForegroundBrush" Color="#A1A1A1"/>
+      <SolidColorBrush x:Key="AccentBrush" Color="#262626"/>
+      <SolidColorBrush x:Key="AccentForegroundBrush" Color="#FAFAFA"/>
+      <SolidColorBrush x:Key="DestructiveBrush" Color="#82181A"/>
+      <SolidColorBrush x:Key="DestructiveForegroundBrush" Color="#FB2C36"/>
+      <SolidColorBrush x:Key="BorderBrush" Color="#262626"/>
+      <SolidColorBrush x:Key="InputBrush" Color="#262626"/>
+      <SolidColorBrush x:Key="InputBackgroundBrush" Color="#262626"/>
+      <SolidColorBrush x:Key="SwitchBackgroundBrush" Color="#404040"/>
+      <SolidColorBrush x:Key="RingBrush" Color="#525252"/>
+      <SolidColorBrush x:Key="Chart1Brush" Color="#1447E6"/>
+      <SolidColorBrush x:Key="Chart2Brush" Color="#00BC7D"/>
+      <SolidColorBrush x:Key="Chart3Brush" Color="#FE9A00"/>
+      <SolidColorBrush x:Key="Chart4Brush" Color="#AD46FF"/>
+      <SolidColorBrush x:Key="Chart5Brush" Color="#FF2056"/>
+      <SolidColorBrush x:Key="SidebarBrush" Color="#171717"/>
+      <SolidColorBrush x:Key="SidebarForegroundBrush" Color="#FAFAFA"/>
+      <SolidColorBrush x:Key="SidebarPrimaryBrush" Color="#1447E6"/>
+      <SolidColorBrush x:Key="SidebarPrimaryForegroundBrush" Color="#FAFAFA"/>
+      <SolidColorBrush x:Key="SidebarAccentBrush" Color="#262626"/>
+      <SolidColorBrush x:Key="SidebarAccentForegroundBrush" Color="#FAFAFA"/>
+      <SolidColorBrush x:Key="SidebarBorderBrush" Color="#262626"/>
+      <SolidColorBrush x:Key="SidebarRingBrush" Color="#525252"/>
+      <!-- ===== extra tokens (not in the CSS) ===== -->
+      <SolidColorBrush x:Key="BrandBrush" Color="#7C6AF7"/>
+      <SolidColorBrush x:Key="BrandForegroundBrush" Color="#FFFFFF"/>
+      <SolidColorBrush x:Key="BrandSoftBrush" Color="#337C6AF7"/>
+      <SolidColorBrush x:Key="StatusInProgressBrush" Color="#7C6AF7"/>
+      <SolidColorBrush x:Key="StatusAtRiskBrush" Color="#F2C94C"/>
+      <SolidColorBrush x:Key="StatusReadyBrush" Color="#34D399"/>
+      <SolidColorBrush x:Key="StatusDelayedBrush" Color="#F0616D"/>
+      <SolidColorBrush x:Key="BadgeBackgroundBrush" Color="#CC0A0A0A"/>
+      <!-- ===== Fluent control overrides: keep TextBox etc. flat and token-driven ===== -->
+      <SolidColorBrush x:Key="TextControlBackground" Color="Transparent"/>
+      <SolidColorBrush x:Key="TextControlBorderBrush" Color="Transparent"/>
+      <SolidColorBrush x:Key="TextControlForeground" Color="#FAFAFA"/>
+      <SolidColorBrush x:Key="TextControlPlaceholderForeground" Color="#A1A1A1"/>
+      <SolidColorBrush x:Key="TextControlBackgroundPointerOver" Color="Transparent"/>
+      <SolidColorBrush x:Key="TextControlBorderBrushPointerOver" Color="Transparent"/>
+      <SolidColorBrush x:Key="TextControlForegroundPointerOver" Color="#FAFAFA"/>
+      <SolidColorBrush x:Key="TextControlPlaceholderForegroundPointerOver" Color="#A1A1A1"/>
+      <SolidColorBrush x:Key="TextControlBackgroundFocused" Color="Transparent"/>
+      <SolidColorBrush x:Key="TextControlBorderBrushFocused" Color="Transparent"/>
+      <SolidColorBrush x:Key="TextControlForegroundFocused" Color="#FAFAFA"/>
+      <SolidColorBrush x:Key="TextControlPlaceholderForegroundFocused" Color="#A1A1A1"/>
+    </ResourceDictionary>
+  </ResourceDictionary.ThemeDictionaries>
+</ResourceDictionary>
