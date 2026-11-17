@@ -1,0 +1,25 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="dpProject.App"
+             RequestedThemeVariant="Default">
+  <Application.Styles>
+    <FluentTheme />
+  </Application.Styles>
+
+  <Application.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="avares://dpProject/int/element/rules/color.axaml" />
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </Application.Resources>
+  <NativeMenu.Menu>
+      <NativeMenu>
+          <NativeMenuItem Header="About Project Manager" />
+          <NativeMenuItemSeparator Header="-" />
+          <NativeMenuItem Header="Register Studio" />
+          <NativeMenuItem Header="Get Out from this Studio" />
+      </NativeMenu>
+  </NativeMenu.Menu>
+  
+</Application>

@@ -1,0 +1,64 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:svg="using:Avalonia.Svg.Skia"
+             x:Class="dpProject.Element.SettingsView">
+  <ScrollViewer HorizontalScrollBarVisibility="Disabled">
+    <StackPanel Margin="30,28,30,30" Spacing="22">
+      <StackPanel Spacing="5">
+        <TextBlock Text="PREFERENCES" FontSize="11" FontWeight="SemiBold"
+                   LetterSpacing="0.8" Foreground="{DynamicResource MutedForegroundBrush}" />
+        <TextBlock Text="Settings" FontSize="26" FontWeight="Bold" />
+        <TextBlock Text="Manage your workspace preferences."
+                   FontSize="13" Foreground="{DynamicResource MutedForegroundBrush}" />
+      </StackPanel>
+
+      <Border Background="{DynamicResource CardBrush}" BorderBrush="{DynamicResource BorderBrush}"
+              BorderThickness="1" CornerRadius="{DynamicResource RadiusLg}" Padding="22">
+        <StackPanel Spacing="18">
+          <StackPanel Spacing="4">
+            <TextBlock Text="Appearance" FontSize="16" FontWeight="SemiBold" />
+            <TextBlock Text="Your app follows the system appearance automatically."
+                       FontSize="12" Foreground="{DynamicResource MutedForegroundBrush}" />
+          </StackPanel>
+          <Border Background="{DynamicResource MutedBrush}" CornerRadius="{DynamicResource RadiusMd}"
+                  Padding="14">
+            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+              <svg:Svg Path="/asset/ico/theme.svg" Css="{DynamicResource AccentIconCss}"
+                       Width="20" Height="20" VerticalAlignment="Center" />
+              <StackPanel Grid.Column="1" Spacing="3">
+                <TextBlock Text="System default" FontSize="13" FontWeight="SemiBold" />
+                <TextBlock Text="Light or dark mode changes with your operating system."
+                           FontSize="11" TextWrapping="Wrap"
+                           Foreground="{DynamicResource MutedForegroundBrush}" />
+              </StackPanel>
+            </Grid>
+          </Border>
+        </StackPanel>
+      </Border>
+
+      <Border Background="{DynamicResource CardBrush}" BorderBrush="{DynamicResource BorderBrush}"
+              BorderThickness="1" CornerRadius="{DynamicResource RadiusLg}" Padding="22">
+        <StackPanel Spacing="16">
+          <StackPanel Spacing="4">
+            <TextBlock Text="Notifications" FontSize="16" FontWeight="SemiBold" />
+            <TextBlock Text="Choose which activity you want to hear about."
+                       FontSize="12" Foreground="{DynamicResource MutedForegroundBrush}" />
+          </StackPanel>
+          <CheckBox Content="Project updates and milestones" IsChecked="True" />
+          <CheckBox Content="Comments and mentions" IsChecked="True" />
+          <CheckBox Content="Team invitations" IsChecked="True" />
+        </StackPanel>
+      </Border>
+
+      <Border Background="{DynamicResource CardBrush}" BorderBrush="{DynamicResource BorderBrush}"
+              BorderThickness="1" CornerRadius="{DynamicResource RadiusLg}" Padding="22">
+        <StackPanel Spacing="7">
+          <TextBlock Text="Workspace" FontSize="16" FontWeight="SemiBold" />
+          <TextBlock Text="ProjectMan Studio" FontSize="13" />
+          <TextBlock Text="Your creative project workspace"
+                     FontSize="12" Foreground="{DynamicResource MutedForegroundBrush}" />
+        </StackPanel>
+      </Border>
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

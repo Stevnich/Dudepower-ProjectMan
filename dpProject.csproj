@@ -1,0 +1,50 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>asset\icon.ico</ApplicationIcon>
+    <UseAppHost>true</UseAppHost>
+    <RootNamespace>dpProject</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AvaloniaResource Include="Assets\**" />
+    <AvaloniaResource Include="asset\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="dpProject_DevDoc\**\*.cs" />
+    <AvaloniaXaml Remove="dpProject_DevDoc\**\*.axaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="11.3.*" />
+    <PackageReference Include="Avalonia.Desktop" Version="11.3.*" />
+    <PackageReference Include="Avalonia.Svg.Skia" Version="11.1.0" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.*" />
+    <PackageReference Include="Avalonia.Fonts.Inter" Version="11.3.*" />
+  </ItemGroup>
+
+  <Target Name="CreateMacOSAppBundle"
+          AfterTargets="Publish"
+          Condition="'$(RuntimeIdentifier)' != '' and $([System.String]::Copy('$(RuntimeIdentifier)').StartsWith('osx-'))">
+    <PropertyGroup>
+      <_MacOSAppBundle>$(PublishDir)$(AssemblyName).app</_MacOSAppBundle>
+    </PropertyGroup>
+    <ItemGroup>
+      <_MacOSPublishFile Include="$(PublishDir)**/*"
+                         Exclude="$(PublishDir)$(AssemblyName).app/**/*" />
+    </ItemGroup>
+    <MakeDir Directories="$(_MacOSAppBundle)/Contents/MacOS;$(_MacOSAppBundle)/Contents/Resources" />
+    <Copy SourceFiles="@(_MacOSPublishFile)"
+          DestinationFiles="@(_MacOSPublishFile->'$(_MacOSAppBundle)/Contents/MacOS/%(RecursiveDir)%(Filename)%(Extension)')"
+          SkipUnchangedFiles="true" />
+    <Copy SourceFiles="$(MSBuildProjectDirectory)/asset/icon.icns"
+          DestinationFiles="$(_MacOSAppBundle)/Contents/Resources/icon.icns" />
+    <Copy SourceFiles="$(MSBuildProjectDirectory)/macOS/Info.plist"
+          DestinationFiles="$(_MacOSAppBundle)/Contents/Info.plist" />
+  </Target>
+</Project>

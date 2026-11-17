@@ -1,0 +1,87 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="dpProject.Element.NotificationsView">
+  <Grid RowDefinitions="Auto,*">
+    <Grid Grid.Row="0" ColumnDefinitions="*,Auto" Margin="30,28,30,20">
+      <StackPanel Spacing="5">
+        <TextBlock Text="YOUR WORKSPACE" FontSize="11" FontWeight="SemiBold"
+                   LetterSpacing="0.8" Foreground="{DynamicResource MutedForegroundBrush}" />
+        <TextBlock Text="Notifications" FontSize="26" FontWeight="Bold" />
+        <TextBlock Text="Updates from your projects and team."
+                   FontSize="13" Foreground="{DynamicResource MutedForegroundBrush}" />
+      </StackPanel>
+      <Button Grid.Column="1" VerticalAlignment="Center"
+              Content="Mark all as read" Background="Transparent"
+              Foreground="{DynamicResource BrandBrush}"
+              BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1"
+              CornerRadius="{DynamicResource RadiusMd}" Padding="12,8" />
+    </Grid>
+    <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Disabled">
+      <StackPanel Margin="22,0,22,22" Spacing="8">
+        <Border Background="{DynamicResource BrandSoftBrush}" BorderBrush="{DynamicResource BorderBrush}"
+                BorderThickness="1" CornerRadius="{DynamicResource RadiusLg}" Padding="18">
+          <Grid ColumnDefinitions="Auto,*,Auto">
+            <Ellipse Width="9" Height="9" Fill="{DynamicResource BrandBrush}"
+                     VerticalAlignment="Top" Margin="0,6,14,0" />
+            <StackPanel Grid.Column="1" Spacing="5">
+              <TextBlock Text="New comment on Dragon Chase — Ep. 03"
+                         FontSize="14" FontWeight="SemiBold" />
+              <TextBlock Text="Maya left a note on Scene 08: “The lighting pass is looking great.”"
+                         FontSize="12" TextWrapping="Wrap"
+                         Foreground="{DynamicResource MutedForegroundBrush}" />
+              <TextBlock Text="12 minutes ago" FontSize="11"
+                         Foreground="{DynamicResource MutedForegroundBrush}" />
+            </StackPanel>
+          </Grid>
+        </Border>
+        <Border Background="{DynamicResource CardBrush}" BorderBrush="{DynamicResource BorderBrush}"
+                BorderThickness="1" CornerRadius="{DynamicResource RadiusLg}" Padding="18">
+          <Grid ColumnDefinitions="Auto,*,Auto">
+            <Ellipse Width="9" Height="9" Fill="{DynamicResource StatusAtRiskBrush}"
+                     VerticalAlignment="Top" Margin="0,6,14,0" />
+            <StackPanel Grid.Column="1" Spacing="5">
+              <TextBlock Text="Infinite Flow is at risk" FontSize="14" FontWeight="SemiBold" />
+              <TextBlock Text="The project is behind its planned schedule. Review the latest milestones."
+                         FontSize="12" TextWrapping="Wrap"
+                         Foreground="{DynamicResource MutedForegroundBrush}" />
+              <TextBlock Text="1 hour ago" FontSize="11"
+                         Foreground="{DynamicResource MutedForegroundBrush}" />
+            </StackPanel>
+          </Grid>
+        </Border>
+        <Border Background="{DynamicResource CardBrush}" BorderBrush="{DynamicResource BorderBrush}"
+                BorderThickness="1" CornerRadius="{DynamicResource RadiusLg}" Padding="18">
+          <Grid ColumnDefinitions="Auto,*,Auto">
+            <Ellipse Width="9" Height="9" Fill="{DynamicResource StatusReadyBrush}"
+                     VerticalAlignment="Top" Margin="0,6,14,0" />
+            <StackPanel Grid.Column="1" Spacing="5">
+              <TextBlock Text="Neon City is ready to upload"
+                         FontSize="14" FontWeight="SemiBold" />
+              <TextBlock Text="All tasks are complete. Your team can prepare the final upload."
+                         FontSize="12" TextWrapping="Wrap"
+                         Foreground="{DynamicResource MutedForegroundBrush}" />
+              <TextBlock Text="Yesterday" FontSize="11"
+                         Foreground="{DynamicResource MutedForegroundBrush}" />
+            </StackPanel>
+          </Grid>
+        </Border>
+        <Border Background="{DynamicResource CardBrush}" BorderBrush="{DynamicResource BorderBrush}"
+                BorderThickness="1" CornerRadius="{DynamicResource RadiusLg}" Padding="18">
+          <Grid ColumnDefinitions="Auto,*,Auto">
+            <Ellipse Width="9" Height="9" Fill="{DynamicResource MutedForegroundBrush}"
+                     VerticalAlignment="Top" Margin="0,6,14,0" />
+            <StackPanel Grid.Column="1" Spacing="5">
+              <TextBlock Text="You were added to the VFX group"
+                         FontSize="14" FontWeight="SemiBold" />
+              <TextBlock Text="You can now follow the team's work on Lumina — VFX Sims."
+                         FontSize="12" TextWrapping="Wrap"
+                         Foreground="{DynamicResource MutedForegroundBrush}" />
+              <TextBlock Text="2 days ago" FontSize="11"
+                         Foreground="{DynamicResource MutedForegroundBrush}" />
+            </StackPanel>
+          </Grid>
+        </Border>
+      </StackPanel>
+    </ScrollViewer>
+  </Grid>
+</UserControl>
